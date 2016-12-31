@@ -2,7 +2,12 @@
     <div class="row">
         <div class="col-xs-12">
             <h1>reactive extensions</h1>
-            <input id="search" type="text" class="form-control" placeholder="Search for artists">
+            <form [formGroup]="form">
+                <div class="form-group">
+                    <input formControlName="search" id="search" type="text" class="form-control" placeholder="Search for artists">
+                </div>
+
+            </form>
         </div>
     </div>
 </div>

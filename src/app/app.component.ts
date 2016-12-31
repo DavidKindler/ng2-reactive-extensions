@@ -1,5 +1,6 @@
 ///<reference path="../../typings/index.d.ts" />
-import { Component, AfterViewInit} from '@angular/core';
+import { Component, AfterViewInit, OnInit} from '@angular/core';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import {Observable} from 'rxjs/Rx';
 // import {Observable} from 'rxjs/Observable';
 // import 'rxjs/add/operator/debounceTime';
@@ -14,22 +15,24 @@ import {Observable} from 'rxjs/Rx';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
-    constructor() { }
+export class AppComponent implements OnInit {
+    form: FormGroup;
 
-    ngAfterViewInit () {
-         $('#search').keyup(function(e: any){
-            console.log (e.target.value);
+    constructor(fb: FormBuilder) {
+        this.form = fb.group({
+            search: []
         });
+      }
 
-        let $input = $('search');
-        let keyups = Observable.fromEvent($input,'keyup')
-        .map((e:any) => {return e.target.value })
-        .filter( (text: string) => { return text.length >= 3 })
+
+    ngOnInit () {
+        let $input = $('#search');
+        let keyups = Observable.fromEvent($input, 'keyup')
+        .map((e:any) => { return e.target.value; })
+        .filter( (text: string) => { return text.length >= 3; })
         .debounceTime(400)
         .distinctUntilChanged()
         .flatMap( (searchTerm: string) => {
-            console.log ('searchTerm', searchTerm);
             let url: string = 'https://api.spotify.com/v1/search?type=artist&q=' + searchTerm;
             let jqueryXhr: JQueryXHR = $.getJSON(url);
             let promise: Promise<any> = Promise.resolve(jqueryXhr);
