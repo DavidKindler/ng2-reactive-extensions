@@ -1,0 +1,17 @@
+<div class="col-xs-12">
+    <div *ngIf="isLoading"><i class="glyphicon glyphicon-refresh spinning large"></i> Getting data... </div>
+</div>
+<h2>@{{user.login}}</h2>
+<img class="avatar" src="{{user.avatar_url}}" alt="">
+
+<h3>Followers</h3>
+<div class="media" *ngFor="let follower of followers">
+    <div class="media-left">
+        <a href="#">
+            <img class="avatar" src="{{follower.avatar_url}}" alt="">
+        </a>
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading">{{follower.login}}</h4>
+    </div>
+</div>
