@@ -3,12 +3,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 
-import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { GithubProfileComponent } from './github-profile/github-profile.component';
 import { AlbumComponent } from './routes/album.component';
 import { AlbumsComponent } from './routes/albums.component';
 import { ContactComponent } from './routes/contact.component';
+import { routing }  from './app.routing';
+import { Page1Component } from './routes/page1/page1.component';
+import { Page2Component } from './routes/page2/page2.component';
+import { HomeComponent } from './routes/home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { ContactComponent } from './routes/contact.component';
     GithubProfileComponent,
     AlbumComponent,
     AlbumsComponent,
-    ContactComponent
+    ContactComponent,
+    Page1Component,
+    Page2Component,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +30,7 @@ import { ContactComponent } from './routes/contact.component';
     HttpModule,
     ReactiveFormsModule,
     JsonpModule,
-    RouterModule
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]

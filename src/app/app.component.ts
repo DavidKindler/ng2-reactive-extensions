@@ -1,4 +1,4 @@
-///<reference path="../../typings/index.d.ts" />
+//<reference path="../../typings/index.d.ts" />
 import { Component, AfterViewInit, OnInit, OnDestroy} from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { PostService } from './post.service';
